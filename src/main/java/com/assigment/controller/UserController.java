@@ -17,9 +17,6 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @Autowired
-    private QuotaService quotaService;
-
     @GetMapping
     public Iterable<User> getAllUsers() {
         System.out.println("get all");
@@ -55,19 +52,5 @@ public class UserController {
         return ResponseEntity.noContent().build();
     }
 
-    @GetMapping("/consumeQuota/{userId}")
-    public ResponseEntity<String> consumeQuota(@PathVariable String userId) {
-        if (quotaService.consumeQuota(userId)) {
-            return ResponseEntity.ok("Quota consumed successfully");
-        } else {
-            return ResponseEntity.status(HttpStatus.TOO_MANY_REQUESTS).body("Quota exceeded");
-        }
-    }
-
-    @GetMapping("/getUsersQuota")
-    public ResponseEntity<Map<String, Integer>> getUsersQuota() {
-        Map<String, Integer> usersQuota = quotaService.getUsersQuota();
-        return ResponseEntity.ok(usersQuota);
-    }
 
 }

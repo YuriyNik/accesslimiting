@@ -11,7 +11,7 @@ import java.util.Map;
 public class QuotaService {
 
     @Value("${app.maxRequestsPerUser:5}")
-    private int maxRequestsPerUser;
+    private int maxRequestsPerUser=6;
     private Map<String, Integer> userRequestCount = new HashMap<>();
 
     public boolean consumeQuota(String userId) {
@@ -29,10 +29,19 @@ public class QuotaService {
 
     public void resetAllQuotes(){
         userRequestCount.clear();
+        System.out.println("resetAllQuotes");
     }
 
     public Map<String, Integer> getUsersQuota() {
         return Collections.unmodifiableMap(userRequestCount);
+    }
+
+    public void setMaxRequestsPerUser(int maxRequestsPerUser) {
+        this.maxRequestsPerUser = maxRequestsPerUser;
+    }
+
+    public int getMaxRequestsPerUser() {
+        return maxRequestsPerUser;
     }
 }
 

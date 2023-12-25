@@ -30,7 +30,7 @@ public class UserService {
         if (existingUser != null) {
             existingUser.setFirstName(updatedUser.getFirstName());
             existingUser.setLastName(updatedUser.getLastName());
-            existingUser.setLastLoginTimeUtc(LocalDateTime.now());
+          //  existingUser.setLastLoginTimeUtc(LocalDateTime.now());
             return userRepository.save(existingUser);
         }
 

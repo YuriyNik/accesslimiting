@@ -1,5 +1,4 @@
 package com.assigment.model;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -14,7 +13,13 @@ public class User {
     private String firstName;
     private String lastName;
     private LocalDateTime lastLoginTimeUtc;
-
+    public User(){
+    }
+    public User(String firstName, String lastName,LocalDateTime lastLoginTimeUtc ){
+    this.firstName=firstName;
+    this.lastName=lastName;
+    this.lastLoginTimeUtc=lastLoginTimeUtc;
+    }
     public void setId(String id) {
         this.id = id;
     }

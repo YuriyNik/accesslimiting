@@ -5,8 +5,6 @@ import com.assigment.service.QuotaService;
 import com.assigment.service.UserService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
@@ -14,8 +12,6 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
-
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -68,7 +64,7 @@ public class UserControllerTest {
         user.setId("1");
         user.setFirstName("John");
         user.setLastName("Doe");
-       // user.setLastLoginTimeUtc(LocalDateTime.now());
+       // user.setLastLoginTimeUtc(LocalDateTime.now())
 
         when(userService.createUser(any(User.class))).thenReturn(user);
 

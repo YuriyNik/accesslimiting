@@ -1,7 +1,5 @@
-package com.assigment.config;
+package com.assigment.repository;
 
-import com.assigment.repository.PrintUserRepository;
-import com.assigment.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Component;

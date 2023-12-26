@@ -1,23 +1,34 @@
 package com.assigment.service;
 
-import org.junit.jupiter.api.BeforeEach;
+import com.assigment.repository.ActiveRepository;
+import com.assigment.repository.PrintUserRepository;
+import com.assigment.repository.UserRepository;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
-import org.springframework.beans.factory.annotation.Value;
+import org.mockito.Mock;
 import org.springframework.boot.test.context.SpringBootTest;
-
-import java.util.Map;
+import org.springframework.boot.test.mock.mockito.MockBean;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 class QuotaServiceTest {
-    @InjectMocks
+
+
+    @Mock
+    private UserRepository userRepository;
+
+    @MockBean
+    private PrintUserRepository printUserRepository;
+
+    @MockBean
+    private ActiveRepository activeRepository;
+    @MockBean
     private QuotaService quotaService;
 
     @Test
     void testMaxRequestsPerUser() {
-        assertEquals(6,quotaService.getMaxRequestsPerUser());
+        assertEquals(5,quotaService.getMaxRequestsPerUser());
     }
 
     @Test

@@ -1,6 +1,5 @@
 package com.assigment.config;
 
-import com.assigment.controller.QuotaController;
 import com.assigment.model.User;
 import com.assigment.repository.UserRepository;
 import org.slf4j.Logger;
@@ -43,9 +42,9 @@ public class DataInitializer implements CommandLineRunner {
 
     private void initializeUsers() {
 
-        for (int i=0;i<30;i++){
+        for (int i=0;i<10;i++){
             User user = new User(generateFirstName(), generateLastName(), LocalDateTime.now().minusDays(1));
-            //log.info("User created = ",userRepository.save(user));
+            user.setId("User"+i);
             userRepository.save(user);
             log.info("User created = "+user);
         }

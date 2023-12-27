@@ -52,7 +52,7 @@ public class UserServiceTest {
         User user = new User();
         user.setId("1");
         user.setFirstName("John");
-        user.setLastName("Doe");
+        user.setLastName("Smit");
         user.setLastLoginTimeUtc(LocalDateTime.now());
 
         when(userRepository.save(user)).thenReturn(user);

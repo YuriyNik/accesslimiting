@@ -3,28 +3,31 @@ package com.assigment.service;
 import com.assigment.repository.ActiveRepository;
 import com.assigment.repository.PrintUserRepository;
 import com.assigment.repository.UserRepository;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 class QuotaServiceTest {
 
-
-    @Mock
+    @Autowired
     private UserRepository userRepository;
 
-    @MockBean
+    @Autowired
     private PrintUserRepository printUserRepository;
 
-    @MockBean
+    @Autowired
     private ActiveRepository activeRepository;
-    @MockBean
+    @Autowired
     private QuotaService quotaService;
+
+    @BeforeAll
+    public static void init(){
+
+    }
 
     @Test
     void testMaxRequestsPerUser() {
@@ -58,7 +61,6 @@ class QuotaServiceTest {
 
         quotaService.consumeQuota(userId1);
         quotaService.consumeQuota(userId2);
-
         quotaService.resetAllQuotes();
 
         assertTrue(quotaService.getUsersQuota().isEmpty());

@@ -14,6 +14,8 @@ public class ActiveRepository {
     private UserRepository userRepository;
     @Autowired
     private PrintUserRepository printUserRepository;
+//@todo think about autoswither of repositories by timer
+    private CrudRepository currentRepository;
 
     public CrudRepository getRepository() {
         return isDayTime()?userRepository:printUserRepository;

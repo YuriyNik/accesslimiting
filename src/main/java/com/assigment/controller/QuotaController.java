@@ -1,5 +1,6 @@
 package com.assigment.controller;
 
+import com.assigment.aspect.RateLimited;
 import com.assigment.service.QuotaService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -21,6 +22,11 @@ public class QuotaController {
     @Autowired
     private QuotaService quotaService;
 
+    @GetMapping("/limitedResource/{userId}")
+    @RateLimited( key = "#userId")
+    public String consumeRateLimit(@PathVariable String userId) {
+        return "Access granted to limited resource for user="+userId;
+    }
     @GetMapping("/consumeQuota/{userId}")
     public ResponseEntity<String> consumeQuota(@PathVariable String userId) {
         if (quotaService.consumeQuota(userId)) {

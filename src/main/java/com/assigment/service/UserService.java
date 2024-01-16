@@ -12,9 +12,6 @@ public class UserService {
     @Autowired
     private UserRepository userRepository;
 
-    public Iterable<User> getAllUsers() {
-        return userRepository.findAll();
-    }
 
     public User getUserById(String userId) {
         return userRepository.findById(userId).orElse(null);

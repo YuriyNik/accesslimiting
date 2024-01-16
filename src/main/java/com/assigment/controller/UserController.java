@@ -18,11 +18,6 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @GetMapping
-    public Iterable<User> getAllUsers() {
-        log.info("get all");
-        return userService.getAllUsers();
-    }
 
     @GetMapping("/{id}")
     public ResponseEntity<User> getUserById(@PathVariable String id) {

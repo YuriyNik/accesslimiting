@@ -1,18 +1,17 @@
 package com.assigment;
 
 import java.util.HashMap;
-import java.util.Locale;
 
 public class Striing {
     public static String getFirstNonRepeatingCharacter(String input) {
-        HashMap<Character, Integer> countMap = new HashMap<>();
-        input = input.toLowerCase(Locale.ROOT);
+        HashMap<Character, Integer> charCountMap = new HashMap<>();
+        input=input.toLowerCase();
         for (int i = 0; i < input.length(); i++) {
-            char c = input.charAt(i);
-            countMap.put(c, countMap.getOrDefault(c, 0) + 1);
+            char ch = input.charAt(i);
+            charCountMap.put(ch, charCountMap.getOrDefault(ch,0)+1);
         }
         for (int i = 0; i < input.length(); i++) {
-            if (countMap.get(input.charAt(i)) == 1) {
+            if (charCountMap.get(input.charAt(i))==1){
                 return String.valueOf(input.charAt(i));
             }
         }

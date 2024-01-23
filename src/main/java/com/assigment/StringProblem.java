@@ -2,7 +2,7 @@ package com.assigment;
 
 import java.util.HashMap;
 
-public class Striing {
+public class StringProblem {
     public static String getFirstNonRepeatingCharacter(String input) {
         HashMap<Character, Integer> charCountMap = new HashMap<>();
         input=input.toLowerCase();

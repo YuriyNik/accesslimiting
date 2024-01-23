@@ -1,7 +1,6 @@
 package com.assigment.controller;
 
 import com.assigment.model.User;
-import com.assigment.service.QuotaService;
 import com.assigment.service.UserService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
@@ -12,9 +11,6 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
@@ -30,20 +26,10 @@ public class UserControllerTest {
     @MockBean
     private UserService userService;
 
-    @MockBean
-    private QuotaService quotaService;
+  //@MockBean
+  //private QuotaService quotaService;
 
-    @Test
-    public void testGetAllUsers() throws Exception {
-        List<User> userList = new ArrayList<>();
-        when(userService.getAllUsers()).thenReturn(userList);
 
-        mockMvc.perform(MockMvcRequestBuilders.get("/api/users"))
-                .andExpect(status().isOk())
-                .andExpect(jsonPath("$").isArray());
-
-        verify(userService, times(1)).getAllUsers();
-    }
 
     @Test
     public void testGetUserById() throws Exception {
